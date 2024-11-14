@@ -36,3 +36,36 @@ python app.py
 Once the app is running, navigate to http://127.0.0.1:5000/login in your browser to access the login page.
 
 Enjoy using the ecommerce app!
+
+Project Structure
+
+```bash
+ecommerce_app/
+├── app.py
+├── config.py
+├── controllers/
+│   └── user_controller.py
+├── models/
+│   └── user.py
+├── services/
+│   └── user_service.py
+├── templates/
+│   ├── register.html
+│   ├── login.html
+│   └── dashboard.html
+├── static/
+│   ├── css/
+│   │   └── styles.css
+│   └── js/
+│       ├── register.js
+│       ├── login.js
+└── utils/
+    └── db.py
+```
+## Project images
+
+![Register](user-module-app-02.png)
+
+![Login](user-module-app-01.png)
+
+![User Profile](user-module-app-03.png)
