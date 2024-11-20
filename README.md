@@ -4,8 +4,21 @@ This is a simple guide to set up and run the ecommerce app locally.
 
 ## Steps to Set Up
 
+### Clone the repo
+- make sure you have [Git](https://git-scm.com/downloads) installed first
+- open CMD or powershll then type the following command:
+```bash
+git clone https://github.com/Helwan-Diploma-SW/user-module-app.git
+```
+- Then change directory to that location
+
+```bash
+cd user-module-app
+```
+
 ### 1. Create a Virtual Environment
-First, create a virtual environment for the project. This will isolate the project dependencies from your system Python.
+- First, make sure you have [python 3.11.0](https://www.python.org/downloads/release/python-3110/) installed
+- then create a virtual environment for the project. This will isolate the project dependencies from your system Python.
 
 ```bash
 python -m venv venv
