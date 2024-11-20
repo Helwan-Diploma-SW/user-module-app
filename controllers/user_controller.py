@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify, session, redirect, url_for, render_template
 from services.user_service import register_user, authenticate_user, get_user_profile
+from sqlalchemy.exc import IntegrityError
+from utils.db import db
 
 user_bp = Blueprint('user', __name__)
 
@@ -17,8 +19,14 @@ def login_page():
 @user_bp.route('/api/users/register', methods=['POST'])
 def register():
     data = request.json
-    user = register_user(data['username'], data['email'], data['password'])
-    return jsonify({'message': 'User registered successfully', 'user_id': user.id})
+    try:
+        # Call the function to register the user
+        user = register_user(data['username'], data['email'], data['password'])
+        return jsonify({'message': 'User registered successfully', 'user_id': user.id}), 201
+    except IntegrityError:
+        # Rollback the session to ensure it's clean for future queries
+        db.session.rollback()
+        return jsonify({'message': 'Username already exists'}), 400
 
 # API endpoint to authenticate a user
 @user_bp.route('/api/users/login', methods=['POST'])
